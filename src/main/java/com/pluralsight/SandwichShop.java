@@ -15,15 +15,26 @@ public class SandwichShop {
        double total;
 
        Scanner scanner = new Scanner(System.in);
-       System.out.print("Select sandwich size (regular or large): ");
+       System.out.print("Select sandwich size (regular/large): ");
        String sandwichSize = scanner.nextLine();
 
-       if (sandwichSize == "regular") {
+       if (sandwichSize.equals("regular")) {
            price = regularBasePrice;
        } else {
            price = largeBasePrice;
        }
-       System.out.println("The " + sandwichSize + " price is " + price);
+       System.out.println("The " + sandwichSize + " sandwich is " + price);
+
+       System.out.print("Would you like a loaded sandwich (yes/no): ");
+       String isLoaded = scanner.nextLine();
+
+        if (isLoaded.equals("yes") && sandwichSize.equals("regular")) {
+            price += 1;
+            System.out.println("The loaded regular sandwich is $" + price);
+        } else if (isLoaded.equals("yes") && sandwichSize.equals("large")) {
+            price += 1.75;
+            System.out.println("The loaded large sandwich is $" + price);
+        }
 
        System.out.print("How old are you? ");
        int age = scanner.nextInt();
